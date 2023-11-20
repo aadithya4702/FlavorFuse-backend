@@ -111,7 +111,16 @@ const validateotp = async (req, res) => {
 };
 
 const getProfile = async (req, res) => {
-  const { token } = req.cookies;
+  const token;
+
+if (req.cookies.token) {
+    token = req.cookies.token;
+  }
+  // Check if the token is in the Authorization header
+  else if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+  
   console.log(token);
   if (token) {
     try {
