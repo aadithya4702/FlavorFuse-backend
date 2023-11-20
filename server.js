@@ -7,6 +7,12 @@ const cors = require("cors");
 const { secretKey } = require("./config/keys");
 const cookieparser = require("cookie-parser");
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieparser());
+
+
 // Middleware
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -16,15 +22,13 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-   origin: "https://flavorfuse.netlify.app/",
+   origin: "https://flavorfuse.netlify.app",
     credentials: true, 
   })
 );
 app.options('*', cors());
 
-app.use(express.json());
-app.use(cookieparser());
-app.use(express.urlencoded({ extended: false }));
+
 
 // DB connection
 mongoose
