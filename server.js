@@ -9,6 +9,7 @@ const cookieparser = require("cookie-parser");
 
 // Middleware
 app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
   console.log("path " + req.path + " method " + req.method);
   next();
 });
