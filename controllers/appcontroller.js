@@ -111,7 +111,7 @@ const validateotp = async (req, res) => {
 };
 
 const getProfile = async (req, res) => {
-  const token;
+  let token;
 
 if (req.cookies.token) {
     token = req.cookies.token;
