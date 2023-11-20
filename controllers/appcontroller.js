@@ -121,11 +121,12 @@ if (req.cookies.token) {
     token = req.headers.authorization.split(' ')[1];
   }
   
-  console.log(token);
+  
   if (token) {
     try {
       const verifyAsync = promisify(jwt.verify);
       const user = await verifyAsync(token, secretKey);
+      console.log(user);
       res.json(user);
     } catch (error) {
       res.status(500).json({ message: "An error occurred" });
