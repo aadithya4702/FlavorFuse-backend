@@ -14,7 +14,10 @@ app.use((req, res, next) => {
 });
 
 app.use(
-  cors()
+  cors({
+   origin: "https://flavorfuse.netlify.app/",
+    credentials: true, 
+  })
 );
 
 app.use(express.json());
