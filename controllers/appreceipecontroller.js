@@ -184,14 +184,14 @@ const searchRecipes = async (req, res) => {
   try {
     const { query } = req.body;
 
-    console.log("Received query:", query); 
+    
 
     if (query) {
       const recipes = await recipemodel.find({
         title: { $regex: new RegExp(query, "i") },
       });
 
-      console.log("Matching recipes:", recipes); 
+      
 
       res.status(200).json({ recipes });
     } else {
