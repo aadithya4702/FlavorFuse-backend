@@ -74,9 +74,9 @@ const validateotp = async (req, res) => {
   const email = req.body.email;
 
   try {
-    console.log("Searching for email:", email);
+    
     const validuser = await verifymodel.findOne({ email: email });
-    console.log("Result from database:", validuser);
+    
 
     if (validuser && validuser.otp === otpval) {
       const newUser = {
@@ -163,7 +163,7 @@ const createRecipe = async (req, res) => {
     const s = await User.findByIdAndUpdate(userId, {
       $push: { recipes: newRecipe._id },
     });
-    console.log(s);
+    
 
     res.status(201).json(newRecipe);
   } catch (error) {
